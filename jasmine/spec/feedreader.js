@@ -70,9 +70,9 @@ $(function() {
          */
         it('switches the visible state when the menu icon is clicked', function() {
             $menu.trigger('click');
-            expect($body.hasClass('menu-hidden')).toBeFalsy();
+            expect($body.hasClass('menu-hidden')).toBe(false);
             $menu.trigger('click');
-            expect($body.hasClass('menu-hidden')).toBeTruthy();
+            expect($body.hasClass('menu-hidden')).toBe(true);
         });
     });
 
@@ -90,9 +90,8 @@ $(function() {
          * 记住 loadFeed() 函数是异步的所以这个而是应该使用 Jasmine 的 beforeEach
          * 和异步的 done() 函数。
          */
-        it('Ensure that the loadFeed function is called and works well', function(done) {
-            expect($feed.find('.entry').length > 0).toBeTruthy();
-            done();
+        it('Ensure that the loadFeed function is called and works well', function() {
+            expect($feed.find('.entry').length > 0).toBe(true);
         });
     });
 
@@ -101,7 +100,9 @@ $(function() {
         var content;
         beforeEach(function (done) {
             content = $('.feed').html();
-            loadFeed(3,done);
+            for(var i = allFeeds.length -1; i >=0; i-- ) {
+                loadFeed(3, done);
+            }
         });
         /* TODO:
          * 写一个测试保证当用 loadFeed 函数加载一个新源的时候内容会真的改变。
