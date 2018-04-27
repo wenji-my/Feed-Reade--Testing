@@ -20,5 +20,5 @@
 ## 安装
 
 首先从GitHub上把项目克隆到本地仓库
-```git clone https://github.com/wenji-my/Feed-Reade--Testing.git```
-然后打开根目录下的index.html便可以看到所有已经完成的测试用例，也可以使用代码编辑器打开jasmine/spec/feedreader.js文件查看所有测试用例的源代码
+```git clone https://github.com/wenji-my/Feed-Reade--Testing.git```<br>
+然后打开根目录下的index.html便可以看到所有已经完成的测试用例，也可以使用代码编辑器打开jasmine/spec/feedreader.js文件查看所有测试用例的源代码。
