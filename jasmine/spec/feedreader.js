@@ -48,19 +48,15 @@ $(function() {
 
     /* TODO: 写一个叫做 "The menu" 的测试用例 */
     describe('The menu', function() {
-        var $body,$menu;
-
-        beforeEach(function() {
-            $menu = $('.menu-icon-link');
+        var $menu = $('.menu-icon-link'),
             $body = $('body');
-        });
 
         /* TODO:
          * 写一个测试用例保证菜单元素默认是隐藏的。你需要分析 html 和 css
          * 来搞清楚我们是怎么实现隐藏/展示菜单元素的。
          */
         it('is hidden by default', function() {
-            expect($('body').hasClass('menu-hidden')).toBe(true);
+            expect($body.hasClass('menu-hidden')).toBe(true);
         });
 
         /* TODO:
@@ -97,20 +93,22 @@ $(function() {
 
     /* TODO: 写一个叫做 "New Feed Selection" 的测试用例 */
     describe('New Feed Selection', function() {
-        var content;
+        var content1,content2;
         beforeEach(function (done) {
-            content = $('.feed').html();
-            for(var i = allFeeds.length -1; i >=0; i-- ) {
-                loadFeed(3, done);
-            }
+            loadFeed(1, function () {
+                content1 = $('.feed').html();
+                loadFeed(2,function () {
+                    content2 = $('.feed').html();
+                    done();
+                })
+            })
         });
         /* TODO:
          * 写一个测试保证当用 loadFeed 函数加载一个新源的时候内容会真的改变。
          * 记住，loadFeed() 函数是异步的。
          */
-        it('content in container with class feed should be changed when function loadFeed works',function(done) {
-            expect(content).not.toBe($('.feed').html());
-            done();
+        it('content in container with class feed should be changed when function loadFeed works',function() {
+            expect(content1).not.toBe(content2);
         });
     });
 
